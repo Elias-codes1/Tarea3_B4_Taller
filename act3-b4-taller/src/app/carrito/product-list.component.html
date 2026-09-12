@@ -1,0 +1,8 @@
+<h2>Productos disponibles</h2>
+
+<ul *ngIf="productos.length">
+  <li *ngFor="let producto of productos">
+    {{ producto.nombre }} - Q{{ producto.precio }}
+    <button (click)="agregarAlCarrito(producto)">Agregar</button>
+  </li>
+</ul>

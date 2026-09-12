@@ -1,0 +1,18 @@
+<h2>Resumen del carrito</h2>
+
+<ul *ngIf="cart$ | async as items">
+  <li *ngFor="let item of items">
+    {{ item.product.nombre }} -
+    <input
+      type="number"
+      min="1"
+      [value]="item.cantidad"
+      (change)="actualizarCantidad(item.product.id, $any($event.target).value)"
+    />
+    x Q{{ item.product.precio }} =
+    Q{{ item.product.precio | subtotal:item.cantidad }}
+    <button (click)="eliminarProducto(item.product.id)">Eliminar</button>
+  </li>
+</ul>
+
+<h3>Total: Q{{ total$ | async }}</h3>
